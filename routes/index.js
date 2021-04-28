@@ -79,8 +79,8 @@ router.get('/', function (req, res, next) {
 			// send a message to the chat acknowledging receipt of their message
 			bot.sendMessage(chatId, 'Received your message');
 		});
-		
-		res.render('connected');
+
+		res.render('index');
 	} catch (e) {
 		console.log(e);
 	}
