@@ -33,7 +33,7 @@ const bot = new TelegramBot(token, {
     let message = '';
     const key = executionType + '-' + orderId;
     let counter = 0;
-    if(executionType != 'TRADE') return;
+    // if(executionType != 'TRADE') return;
     message = executionType + ' ' + symbol + ' ' + side + ' ' + orderType + ' ' + price + ' ' + quantity;
 
     try {
