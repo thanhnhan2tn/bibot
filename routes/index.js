@@ -33,9 +33,9 @@ const bot = new TelegramBot(token, {
     let message = '';
     const key = executionType + '-' + orderId;
     let counter = 0;
-    // if(executionType != 'TRADE') return;
+    //
     message = executionType + ' ' + symbol + ' ' + side + ' ' + orderType + ' ' + price + ' ' + quantity;
-
+    if(message.indexOf('TRADE') < 0){ return;}
     try {
       // AWS.config.region = process.env.awsSNSRegion;
       // AWS.config.update({
