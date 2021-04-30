@@ -100,8 +100,8 @@ router.get('/', function (req, res, next) {
   }
 });
 
-setInterval(() => {
-  http.get(process.env.DOMAIN);
-}, 280000);
+//setInterval(() => {
+//  http.get(process.env.DOMAIN);
+//}, 280000);
 
 module.exports = router;
