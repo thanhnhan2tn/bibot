@@ -14,9 +14,6 @@ const bot = new TelegramBot(token, {
   polling: true
 });
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-
   binance.options({
     'APIKEY': process.env.binanceKey,
     'APISECRET': process.env.binanceSecret
@@ -93,11 +90,13 @@ router.get('/', function (req, res, next) {
       // send a message to the chat acknowledging receipt of their message
       bot.sendMessage(chatId, 'Received your message');
     });
-
-    res.render('index');
   } catch (e) {
     console.log(e);
   }
+
+/* GET users listing. */
+router.get('/', function (req, res, next) {
+ res.render('index');
 });
 
 //setInterval(() => {
