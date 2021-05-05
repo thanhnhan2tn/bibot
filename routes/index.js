@@ -99,8 +99,5 @@ router.get('/', function (req, res, next) {
  res.render('index');
 });
 
-//setInterval(() => {
-//  http.get(process.env.DOMAIN);
-//}, 280000);
 
 module.exports = router;
