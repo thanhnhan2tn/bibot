@@ -14,9 +14,7 @@ const bot = new TelegramBot(token, {
   polling: true
 });
 
-app.get("/debug-sentry", function mainHandler(req, res) {
-  throw new Error("My first Sentry error!");
-});
+
 
 binance.options({
   'APIKEY': process.env.binanceKey,
@@ -105,6 +103,10 @@ try {
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   res.render('index');
+});
+
+router.get("/debug-sentry", function mainHandler(req, res) {
+  throw new Error("My first Sentry error!");
 });
 
 
