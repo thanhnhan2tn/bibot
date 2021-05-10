@@ -2,6 +2,8 @@
 
 Binance does not currently offer notications when orders are created, cancelled or fulfilled. This will allow you to always stay current of your order's status.
 
+![alt telegram-notification](https://github.com/thanhnhan2tn/bibot/blob/master/public/stylesheets/telegram-notification.jpg?raw=true)
+
 ### Prerequisites
 
 Binance API credentials - READ ONLY!! (https://www.binance.com/en/support/faq/360002502072)
