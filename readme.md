@@ -1,4 +1,4 @@
-# Binance Order Notifications
+# Binance Order push Telegram Notifications
 
 Binance does not currently offer notications when orders are created, cancelled or fulfilled. This will allow you to always stay current of your order's status.
 
