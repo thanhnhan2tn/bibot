@@ -106,7 +106,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get("/debug-sentry", function mainHandler(req, res) {
-  throw new Error("My first Sentry error!");
+  console.error("My first Sentry error!");
 });
 
 
