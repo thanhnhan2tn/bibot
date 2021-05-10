@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@sentry/integrations": "^6.3.6",
     "@sentry/node": "^6.3.5",
     "@sentry/tracing": "^6.3.5",
     "aws-sdk": "^2.179.0",

@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 const Sentry = require("@sentry/node");
 const Tracing = require("@sentry/tracing");
+const Integrations = require("@sentry/integrations");
 
 var index = require('./routes/index');
 
@@ -20,7 +21,7 @@ Sentry.init({
     new Sentry.Integrations.Http({ tracing: true }),
     // enable Express.js middleware tracing
     new Tracing.Integrations.Express({ app }),
-    new Sentry.Integrations.CaptureConsole({
+    new Integrations.CaptureConsole({
       levels: ['error', 'log']
   })
   ],
