@@ -18,6 +18,10 @@ Create the following environment variables
 ```
 export binanceKey=[binance_api_key]
 export binanceSecret=[binance_api_secret_key]
+
+export teleKey=[teleKey]
+export teleChanel=[channel ID]
+
 ```
 
 Once set up, `yarn start` and enjoy notifications on the go!
