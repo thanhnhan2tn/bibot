@@ -1,4 +1,4 @@
-const binance = require('node-binance-api');
+const Binance = require('node-binance-api');
 const express = require('express');
 const router = express.Router();
 const http = require('http');
@@ -16,7 +16,7 @@ const bot = new TelegramBot(token, {
 
 
 
-binance.options({
+const binance = new Binance().options({
   'APIKEY': process.env.binanceKey,
   'APISECRET': process.env.binanceSecret
 });
@@ -32,33 +32,21 @@ function execution_update(data) {
     i: orderId,
     X: orderStatus
   } = data;
+  
+  if (!executionType) {
+    return
+  }
   let message = '';
   const key = executionType + '-' + orderId;
   let counter = 0;
   //
-  message = '#' + symbol + ', ' + side + ' ' + orderType + ' ' + price + ' ' + quantity;
-  if (executionType.indexOf('TRADE') < 0) {
-    console.log(message);
-    return;
+  if (symbol && side && orderType && price && quantity) {
+    message = executionType + ' #' + symbol + ', ' + side + ' ' + orderType + ' ' + price + ' ' + quantity;
   }
-  // AWS.config.region = process.env.awsSNSRegion;
-  // AWS.config.update({
-  // 	accessKeyId: process.env.awsKeyId,
-  // 	secretAccessKey: process.env.awsSecret
-  // });
-
-  // const sns = new AWS.SNS();
-  // const params = {
-  // 	Message: message,
-  // 	MessageStructure: 'string',
-  // 	PhoneNumber: process.env.phoneNumber,
-  // 	Subject: 'Order Alert'
-  // };
-
-  // sns.publish(params, function (err, data) {
-  // 	if (err) { console.log(err, err.stack); } // an error occurred
-  // 	else { console.log(data); }
-  // });
+  // if (executionType && executionType.indexOf('TRADE') < 0) {
+  //   console.log(message);
+  //   // return;
+  // }
 
   try {
     bot.sendMessage(teleId, message).catch((error) => {
@@ -73,9 +61,7 @@ function execution_update(data) {
 
 
 try {
-  binance.websockets.userData(function () {
-    console.log('1');
-  }, execution_update);
+  binance.websockets.userData(execution_update, true);
   bot.onText(/\/echo (.+)/, (msg, match) => {
     // 'msg' is the received Message from Telegram
     // 'match' is the result of executing the regexp above on the text content
@@ -102,7 +88,9 @@ try {
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.render('index');
+//   res.render('index');
+  
+  res.type('txt').send('Working');
 });
 
 router.get("/debug-sentry", function mainHandler(req, res) {
